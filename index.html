@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoCrip Prices</title>
+    <link rel="stylesheet" href="./commonStyle.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/aa7454d09f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div id="logo">
+            <a href="./index.html" style="font-size: 32px;
+            font-weight: 700;
+            color: wheat;">CryptoCrip</a>
+        </div>
+        <ul class="nav" id="nav">
+            <li class="nav-link"><a href="./index.html">Home</a></li>
+            <li class="nav-link"><a href="./aboutus.html">About Us</a></li>
+            <li class="nav-link"><a href="./contact.html">Contact</a></li>
+            <li class="sociallinkContainer">
+                <img class="sociallink" src="./img/fabook-icon-white.svg" alt="">
+                <img class="sociallink" src="./img/twitter-icon-white.svg" alt="">
+                <img class="sociallink" src="./img/inkedin-icon-white.svg" alt="">
+                <img class="sociallink" src="./img/whatsapp-icon-white.svg" alt="">
+            </li>
+        </ul>
+        <div id="barContainer">
+            <i id="bar" class="fa-solid fa-bars"></i>
+        </div>
+    </header>
+
+    <!-- Hero Section with Call to Action -->
+    <section class="hero gridSection">
+        <div class="sectionDesc">
+            <h1 class="headline">
+                Track Latest <span class="cryptoText">CRYPTO</span> Prices in Real-Time
+            </h1>
+            <p class="sub-headline">
+                Get up-to-date crypto prices directly from your ESP32 device. Click below to see live prices!
+            </p>
+            <div class="btnContainer">
+                <button class="btn btn1"><a href="./getprices.html" style="color: aliceblue;">Get Prices</a>
+                </button>
+            </div>
+            <div id="prices"></div>
+        </div>
+        <div class="sectionPic bouncepic" id="sectionPic">
+            <img src="./img/hero-image.png" alt="">
+        </div>
+    </section>
+
+    <!-- Carousel (Showcase crypto) -->
+    <section>
+        <div class="carouselContainer">
+            <div class="eachCarousel eachCarouselBorder">
+                <img src="./img/bitcoin-icon.png" alt="">
+                <article class="carouselDesc">
+                    <h1 class="carouselTitle">Bitcoin</h1>
+                    <p class="carouselPara">Bitcoin is an innovative payment network</p>
+                    <div class="carouselPrice">
+                        <h3 id="bitcoinPrice">$34,000</h3>
+                        <button class="btn carouselBtn" onclick="fetchCryptoPrices()">Refresh</button>
+                    </div>
+                </article>
+            </div>
+    
+            <div class="eachCarousel">
+                <img src="./img/ethereum-icon.png" alt="">
+                <article class="carouselDesc">
+                    <h1 class="carouselTitle">Ethereum</h1>
+                    <p class="carouselPara">Ethereum is open-source blockchain currency</p>
+                    <div class="carouselPrice">
+                        <h3 id="ethereumPrice">$25,600</h3>
+                        <button class="btn carouselBtn" onclick="fetchCryptoPrices()">Refresh</button>
+                    </div>
+                </article>
+            </div>
+    
+            <div class="eachCarousel">
+                <img src="./img/tether-icon.png" alt="">
+                <article class="carouselDesc">
+                    <h1 class="carouselTitle">Tether</h1>
+                    <p class="carouselPara">Tether is a stable coin cryptocurrency</p>
+                    <div class="carouselPrice">
+                        <h3 id="tetherPrice">$7,000</h3>
+                        <button class="btn carouselBtn" onclick="fetchCryptoPrices()">Refresh</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Crypto Process Section -->
+    <section class="gridSection">
+        <div class="sectionDesc processessDesc">
+            <h1 class="sectionHeader">Our Trading Process</h1>
+            <p class="sectionPara">
+                We enable seamless cryptocurrency trading directly via your wallet, with real-time price fetching from secure sources.
+            </p>
+            <div class="eachProcesses">
+                <img src="./img/handshake-icon-white-line.svg" alt="handshake">
+                <div class="eachprocessesPara">
+                    <h1 class="processTitle">Trading</h1>
+                    <p>
+                        Trade your preferred cryptocurrencies with confidence, knowing the latest market prices.
+                    </p>
+                </div>
+            </div>
+            <div class="eachProcesses">
+                <img src="./img/cart-icon-white-line.svg" alt="handshake">
+                <div class="eachprocessesPara">
+                    <h1 class="processTitle">Buying</h1>
+                    <p>
+                        Buy Bitcoin, Ethereum, Tether, and other tokens with secure transactions, linked to live data.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="sectionPic bouncepic processesPic">
+            <img src="./img/chain-process-img.png" alt="">
+        </div>
+    </section>
+
+    <!-- Simplified Footer -->
+    <footer>
+        <div class="joinSection">
+            <div class="joinDesc">
+                <h1 class="sectionHeader" style="color: aliceblue;">Join with us</h1>
+                <p class="sectionPara">
+                    Start trading today with real-time data powered by your personal ESP32 device!
+                </p>
+            </div>
+            <button class="btn primaryBtn" onclick="fetchCryptoPrices()">JOIN NOW</button>
+        </div>
+
+        <div class="footerlinksContainer">
+            <div class="footerAboutus">
+               <span>CryptoCrip</span>
+                <p class="darkPara">
+                    CryptoCrip is the most reliable platform for cryptocurrency tracking and trading. Stay updated with live prices.
+                </p>
+            </div>
+        </div>
+
+        
+        <div class="footerCopyright">
+            <p>&copy; 2025 Designed and Developed by <a href="#" class="developedBy" style="color: aliceblue;">Rohan Gaikawad</a>.</p>
+        </div>
+    </footer>
+
+    <script>
+        const esp32IP = "http://192.77.77";  // Predefined IP for the ESP32
+        
+        function fetchCryptoPrices() {
+            fetch(`${esp32IP}/prices`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('bitcoinPrice').innerText = `$${data.bitcoin}`;
+                    document.getElementById('ethereumPrice').innerText = `$${data.ethereum}`;
+                    document.getElementById('tetherPrice').innerText = `$${data.tether}`;
+                    document.getElementById('prices').innerHTML = `<p>Prices updated successfully!</p>`;
+                })
+                .catch(error => {
+                    document.getElementById('prices').innerHTML = '<p>Failed to fetch prices. Please try again.</p>';
+                });
+        }
+    </script>
+</body>
+</html>
