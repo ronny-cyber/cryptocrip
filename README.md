@@ -1,4 +1,3 @@
-**# 🚀 Project Title & Tagline
 **CryptoCrip Prices**: Your one-stop destination for all cryptocurrency prices and services 🚀
 
 ## 📖 Description
